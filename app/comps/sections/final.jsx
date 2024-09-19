@@ -19,7 +19,12 @@ export default function Final() {
         animate={isInView ? "visible" : "hidden"}
       >
         <Text>
-          <div className="hidden">
+          <div
+            className="hidden"
+            style={{
+              flex: 0.5,
+            }}
+          >
             <motion.p variants={textVariants}>/ FINALE02</motion.p>
           </div>
           <h1>
@@ -91,8 +96,6 @@ const Container = styled.li`
   }
 `;
 
-const Content = styled.div``;
-
 const Text = styled.div`
   display: flex;
   flex-direction: column;
@@ -112,7 +115,6 @@ const Text = styled.div`
     }
   }
   & p {
-    flex: 0.5;
     line-height: 20px;
     font-size: clamp(12px, 1vw, 16px);
     padding-bottom: 78px;
