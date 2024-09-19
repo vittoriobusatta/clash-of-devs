@@ -1,5 +1,6 @@
 "use client";
 import Header from "./comps/header";
+import Loader from "./comps/loader";
 import { inter } from "./fonts/fonts";
 import "./globals.css";
 import StyledComponentsRegistry from "./lib/styled-components-registry";
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className}`}>
         <StyledComponentsRegistry>
-          {/* <Loader /> */}
+          <Loader />
           <Header />
           {children}
         </StyledComponentsRegistry>
