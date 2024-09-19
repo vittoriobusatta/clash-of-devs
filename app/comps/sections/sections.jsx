@@ -9,6 +9,7 @@ import { motion, useInView } from "framer-motion";
 import {
   descriptionVariants,
   imageVariants,
+  infiniteRotate,
   textVariants,
 } from "../../utils/anims";
 
@@ -78,7 +79,6 @@ export default function Sections() {
                     <motion.img src={imageUrl} variants={imageVariants} />
                   </ImageContainer>
                   <Description>
-                    {/* <p>{description[0]}</p> */}
                     <motion.p custom={1} variants={descriptionVariants}>
                       {description[0]}
                     </motion.p>
@@ -249,4 +249,5 @@ const Icon = styled(Image)`
   bottom: 0;
   right: 0;
   transform: translate(18%, 18%);
+  animation: ${infiniteRotate} 4s ease-in infinite;
 `;

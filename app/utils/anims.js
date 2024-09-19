@@ -31,6 +31,15 @@ export const rotateLogoAnimationInverse = keyframes`
   }
 `;
 
+export const infiniteRotate = keyframes`
+  from {
+    transform: translate(18%, 18%) rotate(0deg);
+  }
+  to {
+    transform: translate(18%, 18%) rotate(360deg);
+  }
+`;
+
 export const runLoaderAnimation = (containerRef, overlayRef) => {
   let tl = gsap.timeline({
     defaults: { duration: 0.3, opacity: 0, y: 50, ease: "power3.out" },

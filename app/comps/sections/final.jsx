@@ -22,7 +22,7 @@ export default function Final() {
           <div
             className="hidden"
             style={{
-              flex: 0.5,
+              flex: 0.7,
             }}
           >
             <motion.p variants={textVariants}>/ FINALE02</motion.p>
@@ -31,6 +31,13 @@ export default function Final() {
             Click&nbsp;&nbsp;Me&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;Might enter
             the finals
           </h1>
+          <Image
+            className="final-vector vector-0"
+            src="/vectors/final-vector.svg"
+            alt="svg"
+            height={50}
+            width={53}
+          />
         </Text>
         <CallToAction>
           <MagneticButton>
@@ -94,9 +101,13 @@ const Container = styled.li`
       padding: 40px max(4vw, 40px) 90px;
     }
   }
+  & .final-vector {
+    position: absolute;
+  }
 `;
 
 const Text = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -118,6 +129,16 @@ const Text = styled.div`
     line-height: 20px;
     font-size: clamp(12px, 1vw, 16px);
     padding-bottom: 78px;
+  }
+  & .final-vector.vector-0 {
+    bottom: 0%;
+    right: 0%;
+    transform: translate(-100%, -0%);
+    z-index: 4;
+    @media (max-width: 800px) {
+      top: 5%;
+      transform: translate(-0%, 0%);
+    }
   }
 `;
 
@@ -142,7 +163,6 @@ const Button = styled.button`
 const CallToAction = styled.div`
   position: relative;
   & .final-vector {
-    position: absolute;
     &.vector-1 {
       top: 0;
       right: 0%;
