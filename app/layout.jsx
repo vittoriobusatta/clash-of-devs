@@ -4,6 +4,7 @@ import Loader from "./comps/loader";
 import { inter } from "./fonts/fonts";
 import "./globals.css";
 import StyledComponentsRegistry from "./lib/styled-components-registry";
+import SmoothScrolling from "./lib/smooth-scrolling";
 
 {
   /* <head>
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
         <StyledComponentsRegistry>
           <Loader />
           <Header />
-          {children}
+          <SmoothScrolling>{children}</SmoothScrolling>
         </StyledComponentsRegistry>
       </body>
     </html>

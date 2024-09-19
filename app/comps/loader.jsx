@@ -32,7 +32,7 @@ export default function Loader() {
           y: 0,
           scale: 1,
           ease: "expo.inOut",
-          duration: 0.5,
+          duration: 0.8,
         }
       );
       tl.fromTo(".l-phrase", { opacity: 0, y: 50 }, { opacity: 1, y: 0 });
@@ -46,7 +46,7 @@ export default function Loader() {
           ease: "Expo.easeInOut",
           clipPath: "circle(100%",
           opacity: 1,
-          delay: 2.2,
+          delay: 2.4,
         }
       );
       gsap.fromTo(
@@ -56,7 +56,7 @@ export default function Loader() {
           duration: 1,
           y: -110 + "%",
           skewY: 2.5 + "deg",
-          delay: 3,
+          delay: 3.4,
         }
       );
     };
