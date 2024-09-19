@@ -87,3 +87,8 @@ a {
 .flex-1 {
   flex: 1;
 }
+
+.hidden {
+  overflow: hidden;
+  height: fit-content;
+}

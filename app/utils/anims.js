@@ -39,13 +39,13 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
   tl.fromTo(
     ".l-letter",
     { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, stagger: 0.1 }
+    { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 }
   );
 
   tl.fromTo(
     ".l-special",
     { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, stagger: 0.1 }
+    { opacity: 1, y: 0, stagger: 0.1, duration: 0.6 }
   );
 
   tl.fromTo(
@@ -56,11 +56,17 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
       y: 0,
       scale: 1,
       ease: "expo.inOut",
-      duration: 0.8,
-    }
+      duration: 1.2,
+    },
+    "-=0.5"
   );
 
-  tl.fromTo(".l-phrase", { opacity: 0, y: 50 }, { opacity: 1, y: 0 });
+  tl.fromTo(
+    ".l-phrase",
+    { opacity: 0, y: 50 },
+    { opacity: 1, y: 0 },
+    "-=0.2"
+  );
 
   gsap.fromTo(
     overlayRef.current,
@@ -72,7 +78,7 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
       ease: "Expo.easeInOut",
       clipPath: "circle(100%)",
       opacity: 1,
-      delay: 2.5,
+      delay: 2.7,
     }
   );
 
@@ -82,7 +88,7 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
     {
       y: "-110%",
       skewY: "2.5deg",
-      delay: 3.4,
+      delay: 3.5,
     }
   );
 };

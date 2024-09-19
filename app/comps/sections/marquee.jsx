@@ -7,8 +7,6 @@ export default function Marquee() {
   const t1 = "<A> Front les tous!";
   const t2 = "Clash of Dev";
 
-  const ref = useRef(null);
-
   const { scrollYProgress } = useScroll();
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-120%"]);
 
@@ -63,7 +61,6 @@ const Horiz = styled.section`
     gap: 2vw;
   }
   & h2 {
-    /* font-size: clamp(44px, 12vw, 162px); */
     font-size: 180px;
     white-space: nowrap;
   }

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
+import MagneticButton from "../magnetic-button";
 
 export default function Final() {
   return (
@@ -15,7 +16,10 @@ export default function Final() {
           </h1>
         </Text>
         <CallToAction>
-          <Button>Enter Next Level</Button>
+          {/* <Button>Enter Next Level</Button> */}
+          <MagneticButton>
+            <Button>Enter Next Level</Button>
+          </MagneticButton>
           <Image
             className="final-vector vector-1"
             src="/vectors/final-v1.svg"

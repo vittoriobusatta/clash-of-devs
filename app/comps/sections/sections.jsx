@@ -4,11 +4,14 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import CommentCursor from "../comment-cursor";
 import Final from "./final";
+import { sections } from "../../data/sections-array";
+import { motion, useInView } from "framer-motion";
 
 export default function Sections() {
-  const container = useRef(null);
+  const containerRef = useRef(null);
+
   return (
-    <Container ref={container}>
+    <Container ref={containerRef}>
       <List>
         {sections.map((section, i) => {
           const {
@@ -21,34 +24,88 @@ export default function Sections() {
             color,
             icon,
           } = section;
+
+          const sectionRef = useRef(null);
+          const isInView = useInView(sectionRef, {
+            once: true,
+            margin: "0px 0px -50px 0px",
+          });
+
+          const textVariants = {
+            hidden: {
+              y: "100%",
+            },
+            visible: (i) => ({
+              y: 0,
+              transition: {
+                duration: 0.4,
+                ease: "easeIn",
+                delay: i * 0.2,
+              },
+            }),
+          };
+
+          const imageVariants = {
+            hidden: {
+              clipPath: "inset(22% 39% round 23vw)",
+            },
+            visible: {
+              clipPath: "inset(0%)",
+              transition: {
+                duration: 0.5,
+                ease: "easeOut",
+              },
+            },
+          };
+
           return (
-            <Section color={color} key={i}>
-              <Head>
-                <Subtitles>
-                  <Points>
-                    <p>{category}</p>
-                    <p>{points}</p>
-                  </Points>
-                  <h3>{title}</h3>
-                </Subtitles>
-                <Cursors>
-                  {cursors.map((cursor, i) => {
-                    return (
-                      <CommentCursor key={i} color={color} name={cursor} />
-                    );
-                  })}
-                </Cursors>
-              </Head>
-              <Body>
-                <ImageContainer color={color}>
-                  <Image src={imageUrl} alt="image " fill />
-                </ImageContainer>
-                <Description>
-                  <p>{description[0]}</p>
-                  <p>{description[1]}</p>
-                </Description>
-              </Body>
-              <Icon src={icon} alt="icon" height={310} width={310} />
+            <Section ref={sectionRef} color={color} key={i}>
+              <motion.div
+                style={{
+                  backgroundColor: `var(--color-${color}-light)`,
+                }}
+                key={i}
+                animate={isInView ? "visible" : "hidden"}
+              >
+                <Head>
+                  <Subtitles>
+                    <Points>
+                      <div className="hidden">
+                        <motion.p custom={0} variants={textVariants}>
+                          {category}
+                        </motion.p>
+                      </div>
+                      <div className="hidden">
+                        <motion.p custom={1} variants={textVariants}>
+                          {points}
+                        </motion.p>
+                      </div>
+                    </Points>
+                    <div className="hidden">
+                      <motion.h3 custom={2} variants={textVariants}>
+                        {title}
+                      </motion.h3>
+                    </div>
+                  </Subtitles>
+                  <Cursors>
+                    {cursors.map((cursor, i) => {
+                      return (
+                        <CommentCursor key={i} color={color} name={cursor} />
+                      );
+                    })}
+                  </Cursors>
+                </Head>
+                <Body>
+                  <ImageContainer color={color}>
+                    <motion.img src={imageUrl} variants={imageVariants} />
+                  </ImageContainer>
+                  <Description>
+                    <p>{description[0]}</p>
+                    <p>{description[1]}</p>
+                  </Description>
+                </Body>
+                <Icon src={icon} alt="icon" height={310} width={310} />
+              </motion.div>
             </Section>
           );
         })}
@@ -106,6 +163,24 @@ const Body = styled.div`
   @media (min-width: 800px) {
     flex-direction: row;
   }
+  & .image-container {
+    position: relative;
+    max-height: 800px;
+    height: 50vw;
+    border-radius: 40px;
+    border-radius: clamp(11px, 4vw, 40px);
+    overflow: hidden;
+    background-color: ${(p) => `var(--color-${p.color}-mid)`};
+    & img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+    @media (min-width: 800px) {
+      flex: 4;
+    }
+  }
 `;
 
 const Subtitles = styled.div`
@@ -138,11 +213,14 @@ const ImageContainer = styled.div`
   max-height: 800px;
   height: 50vw;
   border-radius: 40px;
+  border-radius: clamp(11px, 4vw, 40px);
   overflow: hidden;
   background-color: ${(p) => `var(--color-${p.color}-mid)`};
   & img {
     object-fit: cover;
     object-position: center;
+    height: 100%;
+    width: 100%;
   }
   @media (min-width: 800px) {
     flex: 4;
@@ -189,84 +267,3 @@ const Icon = styled(Image)`
   right: 0;
   transform: translate(18%, 18%);
 `;
-
-const sections = [
-  {
-    category: "Design",
-    title: "L'Artiste de renom",
-    points: "/6 pts",
-    description: [
-      "Le design, c’est son terrain de jeu. Il maîtrise et retranscrit correctement chaque pixel de la maquette.",
-      "Virtuose des couleurs il ne se trompe jamais de code HEX, de spacing ou de border-radius ; Figma n’a aucun secret pour ce Dev de talent.",
-    ],
-    cursors: ["@maislina_"],
-    color: "purple",
-    icon: "/stickers/stk_design.svg",
-    imageUrl: "/images/img_design.jpg",
-  },
-  {
-    category: "Code",
-    title: "Le bâtisseur de code",
-    points: "/6 pts",
-    description: [
-      "Ses lignes de code sont des fondations solides. C’est un maître du front, capable de structurer les systèmes les plus complexes sans se casser la tête.",
-      "Maitre de VSCode, il a surement fini le challenge en s’assurant d’avoir le code le plus clair et le plus propre des 36 participants.",
-    ],
-    cursors: ["@Chris"],
-    color: "pink",
-    imageUrl: "/images/img_code.jpg",
-    icon: "/stickers/stk_code.svg",
-  },
-  {
-    category: "Motion",
-    title: "Le maître de la fluidité",
-    points: "/3 pts",
-    description: [
-      "Aucun composant ne s’affiche sans une animation soignée. Ses transitions sont légères, dynamiques et fluides, captivant l'utilisateur à chaque interaction.",
-      "Ce dev a l’oeil et maitrise le motion mieux que n’importe qui.",
-    ],
-    cursors: ["@Lina", "@Chris"],
-    color: "green",
-    imageUrl: "/images/img_motion.jpg",
-    icon: "/stickers/stk_motion.svg",
-  },
-  {
-    category: "Responsive",
-    title: "Le chercheur de breakpoint",
-    points: "/2 pts",
-    description: [
-      "Quelle que soit la taille de l’écran, il garantit une expérience utilisateur sans faille. Chaque site s’adapte à tous les supports, du mobile au grand écran.",
-      "Il fait attention à chaque breakpoint attentivement, on ne pourra pas le reprendre à l’inspection!",
-    ],
-    cursors: ["@lina", "@chris"],
-    color: "blue",
-    imageUrl: "/images/img_responsive.jpg",
-    icon: "/stickers/stk_responsive.svg",
-  },
-  {
-    category: "Easter Egg",
-    title: "Le maître des secrets",
-    points: "/3 pts",
-    description: [
-      "Derrière une ligne de code bien choisie se cache un secret bien gardé. Il glisse la surprise qui surprendra les utilisateurs les plus curieux.",
-      "Dev attentif aux comportements utilisateurs il saura cacher l’Easter Egg au meilleur endroit.",
-    ],
-    cursors: ["@Lina", "@Chris"],
-    color: "mustard",
-    imageUrl: "/images/img_easter_egg.jpg",
-    icon: "/stickers/stk_easter_egg.svg",
-  },
-  {
-    category: "Big Boss",
-    title: "Le sur-boosted",
-    points: "/Infinite pts",
-    description: [
-      "Il excelle dans tous les domaines, alliant design, propreté de code, réactivité, animations fluides et créativité cachée. Un vrai prodige qui a su briller dans chaque aspect du développement.",
-      "Ce dev aux multitalents a reçu la standing ovation du jury.",
-    ],
-    cursors: ["@Lina", "@Chris"],
-    color: "orange",
-    imageUrl: "/images/img_big_boss.jpg",
-    icon: "/stickers/stk_big_boss.svg",
-  },
-];
