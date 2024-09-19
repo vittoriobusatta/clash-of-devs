@@ -111,6 +111,7 @@ const Text = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 78px;
   @media (max-width: 800px) {
     flex: 1;
     justify-content: space-between;
@@ -128,7 +129,6 @@ const Text = styled.div`
   & p {
     line-height: 20px;
     font-size: clamp(12px, 1vw, 16px);
-    padding-bottom: 78px;
   }
   & .final-vector.vector-0 {
     bottom: 0%;
