@@ -1,13 +1,39 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-black: #262625;
+  --color-beige: #f3f3f1;
+  --color-white: #fefefe;
+
+  --background: #f3f3f1;
+  --foreground: #262625;
+
+  --color-blue-dark: #6b93c0;
+  --color-blue-mid: #6b93c0;
+  --color-blue-light: #badaff;
+
+  --color-orange-mid: #f28164;
+  --color-orange-dark: #d46f55;
+  --color-orange-light: #ffbcab;
+
+  --color-green-light: #ecffce;
+  --color-green-mid: #a2b87e;
+  --color-green-dark: #95ae6d;
+
+  --color-mustard-mid: #cac48e;
+  --color-mustard-light: #fffac2;
+  --color-mustard-dark: #c2bb82;
+
+  --color-pink-mid: #f588b9;
+  --color-pink-dark: #d6699a;
+  --color-pink-light: #ffedf5;
+
+  --color-purple-light: #ebedff;
+  --color-purple-mid: #9fa8fe;
+  --color-purple-dark: #8a92e3;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 html,
@@ -35,8 +61,6 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.flex-1 {
+  flex: 1;
 }
