@@ -1,34 +1,11 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { CardHero } from "../../vector";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { rotateLogoAnimationInverse } from "../../utils/anims";
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      mouseX.set(event.clientX);
-      mouseY.set(event.clientY);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [mouseX, mouseY]);
-
-  const cardX = useTransform(mouseX, [0, window.innerWidth], [-10, 10], {
-    clamp: false,
-  });
-  const cardY = useTransform(mouseY, [0, window.innerHeight], [-10, 10], {
-    clamp: false,
-  });
-  
   return (
     <Container>
       <Heading>
@@ -37,13 +14,11 @@ export default function Hero() {
           <h1 className="mobile-text">l’emporte!</h1>
         </div>
         <Row>
-          <Icon src="/vector1.svg" alt="icon" height={80} width={100} />
+          <Icon src="/vectors/hero-icon.svg" alt="icon" height={80} width={100} />
           <h1>l’emporte!</h1>
         </Row>
       </Heading>
-      <motion.div className="card-content" style={{ x: cardX, y: cardY }}>
-        <Card className="hero-card" />
-      </motion.div>
+      <Card className="hero-card" />
     </Container>
   );
 }
@@ -53,17 +28,13 @@ const Container = styled.section`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 200px clamp(12px, 3vw, 32px) 160px;
+  margin: 200px clamp(12px, 3vw, 32px) max(8vw, 100px);
   @media (max-width: 800px) {
     gap: 2vw;
   }
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 40px;
-  }
-  & .card-content {
-    height: auto;
-    width: 40vw;
   }
 `;
 
@@ -105,9 +76,8 @@ const Row = styled.div`
 const Icon = styled(Image)`
   height: max(8vw, 60px);
   width: max(9vw, 80px);
-  /* height: 8vw;
-  width: 9vw; */
   margin: 0 2vw 0 1vw;
+  animation: ${rotateLogoAnimationInverse} 5s infinite ease-in-out;
   @media (max-width: 400px) {
     height: max(8vw, 40px);
     width: max(9vw, 60px);
@@ -116,8 +86,8 @@ const Icon = styled(Image)`
 
 const Card = styled(CardHero)`
   /* height: min(30vw, 460px); */
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 40vw;
   @media (max-width: 600px) {
     width: 100%;
     max-width: 400px;

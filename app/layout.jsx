@@ -7,12 +7,6 @@ import "./globals.css";
 import StyledComponentsRegistry from "./lib/styled-components-registry";
 import SmoothScrolling from "./lib/smooth-scrolling";
 
-{
-  /* <head>
-            <title>{`Clash Of Dev | <A> Front les tous !</title>`}</title>
-          </head> */
-}
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

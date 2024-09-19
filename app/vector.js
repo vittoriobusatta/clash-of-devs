@@ -615,7 +615,11 @@ export function CardHero({ className }) {
         />
       </g>
       <g className="first-name">
-        <a href="https://www.twitch.tv/maislina_" target="_blank">
+        <a
+          href="https://www.twitch.tv/maislina_"
+          target="_blank"
+          className="link"
+        >
           <g filter="url(#filter5_d_0_182)">
             <path
               d="M274.826 202.248L273.087 192.23L283.001 197.035L277.942 198.407L274.826 202.248Z"
@@ -672,7 +676,11 @@ export function CardHero({ className }) {
         />
       </g>
       <g className="first-name">
-        <a href="https://www.vittoriobusatta.fr/" target="_blank">
+        <a
+          href="https://www.vittoriobusatta.fr/"
+          target="_blank"
+          className="link"
+        >
           <g filter="url(#filter7_d_0_182)">
             <path
               d="M126.174 292.422L127.913 282.403L117.999 287.209L123.058 288.58L126.174 292.422Z"
@@ -729,7 +737,11 @@ export function CardHero({ className }) {
         />
       </g>
       <g className="first-name">
-        <a href="https://www.twitch.tv/LLCoolChris_" target="_blank">
+        <a
+          href="https://www.twitch.tv/LLCoolChris_"
+          target="_blank"
+          className="link"
+        >
           <g filter="url(#filter9_d_0_182)">
             <path
               d="M246.826 319.474L245.087 309.455L255.001 314.261L249.942 315.632L246.826 319.474Z"

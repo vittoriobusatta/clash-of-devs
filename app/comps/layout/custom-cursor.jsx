@@ -49,7 +49,7 @@ function Cursor() {
 
     if (!cursorBigRef || !cursorSmallRef) return;
 
-    const links = document.querySelectorAll("a");
+    const links = document.querySelectorAll(".link");
     const buttons = document.querySelectorAll("button");
     const labels = document.querySelectorAll("label");
     const showimgs = document.querySelectorAll(".showcase__images");

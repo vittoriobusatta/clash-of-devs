@@ -16,6 +16,21 @@ export const rotateLogoAnimation = keyframes`
   }
 `;
 
+export const rotateLogoAnimationInverse = keyframes`
+ 0% {
+    transform: rotate(5deg);
+  }
+  45% {
+    transform: rotate(-5deg);
+  }
+  55% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+`;
+
 export const runLoaderAnimation = (containerRef, overlayRef) => {
   let tl = gsap.timeline({
     defaults: { duration: 0.3, opacity: 0, y: 50, ease: "power3.out" },
@@ -72,4 +87,3 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
     }
   );
 };
-
