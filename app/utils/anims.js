@@ -80,7 +80,6 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
     containerRef.current,
     { opacity: 1, y: "0%", skewY: "0deg" },
     {
-      duration: 1,
       y: "-110%",
       skewY: "2.5deg",
       delay: 3.4,

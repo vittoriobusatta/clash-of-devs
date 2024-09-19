@@ -37,11 +37,11 @@ body.dark {
 }
 
 ::-moz-selection {
-  background: var(--primary_color);
+  background: var(--color-white);
   text-shadow: none;
 }
 ::selection {
-  background: var(--primary_color);
+  background: var(--color-white);
   text-shadow: none;
 }
 

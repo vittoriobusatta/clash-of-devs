@@ -30,7 +30,7 @@ const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("/cover-background.svg");
+  background: url("/vectors/cover-background.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

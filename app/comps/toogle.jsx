@@ -77,8 +77,8 @@ const Slider = styled.span`
     border-radius: 50%;
     background-image: ${(props) =>
       props.isOn
-        ? "url('/logo-icon-dark.svg')"
-        : "url('/logo-icon-light.svg')"};
+        ? "url('/vectors/logo-icon-dark.svg')"
+        : "url('/vectors/logo-icon-light.svg')"};
     background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
