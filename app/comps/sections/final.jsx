@@ -1,22 +1,33 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import MagneticButton from "../magnetic-button";
+import { motion, useInView } from "framer-motion";
+import { textVariants } from "../../utils/anims";
 
 export default function Final() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, {
+    once: true,
+    margin: "0px 0px -50px 0px",
+  });
   return (
-    <Container>
-      <Content>
+    <Container ref={containerRef}>
+      <motion.div
+        className="final-content"
+        animate={isInView ? "visible" : "hidden"}
+      >
         <Text>
-          <p>/ FINALE02</p>
+          <div className="hidden">
+            <motion.p variants={textVariants}>/ FINALE02</motion.p>
+          </div>
           <h1>
             Click&nbsp;&nbsp;Me&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;Might enter
-            the finals{" "}
+            the finals
           </h1>
         </Text>
         <CallToAction>
-          {/* <Button>Enter Next Level</Button> */}
           <MagneticButton>
             <Button>Enter Next Level</Button>
           </MagneticButton>
@@ -42,7 +53,7 @@ export default function Final() {
             width={38}
           />
         </CallToAction>
-      </Content>
+      </motion.div>
     </Container>
   );
 }
@@ -58,28 +69,29 @@ const Container = styled.li`
   @media (max-width: 800px) {
     height: 91vw;
   }
+  & .final-content {
+    width: 100%;
+    height: 100%;
+    background-color: var(--foreground);
+    color: var(--background);
+    border-radius: 60px;
+    padding: 0 max(4vw, 40px) max(6vw, 40px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    @media (min-width: 800px) {
+      gap: 12vw;
+    }
+    @media (max-width: 800px) {
+      justify-content: center;
+      padding: 40px max(4vw, 40px) 90px;
+    }
+  }
 `;
 
-const Content = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: var(--foreground);
-  color: var(--background);
-  border-radius: 60px;
-  padding: 0 max(4vw, 40px) max(6vw, 40px);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  @media (min-width: 800px) {
-    gap: 12vw;
-  }
-  @media (max-width: 800px) {
-    justify-content: center;
-    padding: 40px max(4vw, 40px) 90px;
-  }
-`;
+const Content = styled.div``;
 
 const Text = styled.div`
   display: flex;
@@ -147,10 +159,4 @@ const CallToAction = styled.div`
       z-index: 4;
     }
   }
-  /* @media (max-width: 800px) {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
 `;

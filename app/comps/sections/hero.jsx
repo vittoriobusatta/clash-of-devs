@@ -14,7 +14,12 @@ export default function Hero() {
           <h1 className="mobile-text">l’emporte!</h1>
         </div>
         <Row>
-          <Icon src="/vectors/hero-icon.svg" alt="icon" height={80} width={100} />
+          <Icon
+            src="/vectors/hero-icon.svg"
+            alt="icon"
+            height={80}
+            width={100}
+          />
           <h1>l’emporte!</h1>
         </Row>
       </Heading>
@@ -85,7 +90,6 @@ const Icon = styled(Image)`
 `;
 
 const Card = styled(CardHero)`
-  /* height: min(30vw, 460px); */
   height: auto;
   width: 40vw;
   @media (max-width: 600px) {

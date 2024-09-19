@@ -58,15 +58,10 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
       ease: "expo.inOut",
       duration: 1.2,
     },
-    "-=0.5"
+    "-=0.8"
   );
 
-  tl.fromTo(
-    ".l-phrase",
-    { opacity: 0, y: 50 },
-    { opacity: 1, y: 0 },
-    "-=0.2"
-  );
+  tl.fromTo(".l-phrase", { opacity: 0, y: 50 }, { opacity: 1, y: 0 }, "-=0.2");
 
   gsap.fromTo(
     overlayRef.current,
@@ -78,7 +73,7 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
       ease: "Expo.easeInOut",
       clipPath: "circle(100%)",
       opacity: 1,
-      delay: 2.7,
+      delay: 2.6,
     }
   );
 
@@ -91,4 +86,45 @@ export const runLoaderAnimation = (containerRef, overlayRef) => {
       delay: 3.5,
     }
   );
+};
+
+export const textVariants = {
+  hidden: {
+    y: "100%",
+  },
+  visible: (i) => ({
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeIn",
+      delay: i * 0.2,
+    },
+  }),
+};
+
+export const descriptionVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: "ease",
+      delay: i * 0.2,
+    },
+  }),
+};
+
+export const imageVariants = {
+  hidden: {
+    clipPath: "inset(22% 39% round 23vw)",
+  },
+  visible: {
+    clipPath: "inset(0%)",
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
 };

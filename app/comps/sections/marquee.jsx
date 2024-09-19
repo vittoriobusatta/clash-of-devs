@@ -1,19 +1,16 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Marquee() {
-  const t1 = "<A> Front les tous!";
-  const t2 = "Clash of Dev";
-
   const { scrollYProgress } = useScroll();
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-120%"]);
 
   return (
     <Horiz>
       <motion.div style={{ x }}>
-        <h2>{t1}</h2>
+        <h2>&lt;A&gt; Front les tous!</h2>
         <div>
           <svg
             width="96"
@@ -30,7 +27,7 @@ export default function Marquee() {
             />
           </svg>
         </div>
-        <h2>{t2}</h2>
+        <h2>Clash of Dev</h2>
         <div>
           <svg
             width="97"

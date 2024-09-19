@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body className={`${inter.className}`}>
         <StyledComponentsRegistry>
-          <Loader />
+          {/* <Loader /> */}
           <Header />
           <CustomCursor />
           <SmoothScrolling>{children}</SmoothScrolling>

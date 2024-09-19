@@ -6,6 +6,11 @@ import CommentCursor from "../comment-cursor";
 import Final from "./final";
 import { sections } from "../../data/sections-array";
 import { motion, useInView } from "framer-motion";
+import {
+  descriptionVariants,
+  imageVariants,
+  textVariants,
+} from "../../utils/anims";
 
 export default function Sections() {
   const containerRef = useRef(null);
@@ -31,33 +36,6 @@ export default function Sections() {
             margin: "0px 0px -50px 0px",
           });
 
-          const textVariants = {
-            hidden: {
-              y: "100%",
-            },
-            visible: (i) => ({
-              y: 0,
-              transition: {
-                duration: 0.4,
-                ease: "easeIn",
-                delay: i * 0.2,
-              },
-            }),
-          };
-
-          const imageVariants = {
-            hidden: {
-              clipPath: "inset(22% 39% round 23vw)",
-            },
-            visible: {
-              clipPath: "inset(0%)",
-              transition: {
-                duration: 0.5,
-                ease: "easeOut",
-              },
-            },
-          };
-
           return (
             <Section ref={sectionRef} color={color} key={i}>
               <motion.div
@@ -76,13 +54,13 @@ export default function Sections() {
                         </motion.p>
                       </div>
                       <div className="hidden">
-                        <motion.p custom={1} variants={textVariants}>
+                        <motion.p custom={0.6} variants={textVariants}>
                           {points}
                         </motion.p>
                       </div>
                     </Points>
                     <div className="hidden">
-                      <motion.h3 custom={2} variants={textVariants}>
+                      <motion.h3 custom={1} variants={textVariants}>
                         {title}
                       </motion.h3>
                     </div>
@@ -100,8 +78,13 @@ export default function Sections() {
                     <motion.img src={imageUrl} variants={imageVariants} />
                   </ImageContainer>
                   <Description>
-                    <p>{description[0]}</p>
-                    <p>{description[1]}</p>
+                    {/* <p>{description[0]}</p> */}
+                    <motion.p custom={1} variants={descriptionVariants}>
+                      {description[0]}
+                    </motion.p>
+                    <motion.p custom={2} variants={descriptionVariants}>
+                      {description[1]}
+                    </motion.p>
                   </Description>
                 </Body>
                 <Icon src={icon} alt="icon" height={310} width={310} />

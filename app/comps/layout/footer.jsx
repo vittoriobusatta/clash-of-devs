@@ -9,7 +9,6 @@ export default function Footer() {
       <div className="flex-1">
         <FakeLogo />
       </div>
-
       <Percentage className="flex-1">100%</Percentage>
       <Text className="flex-1">@2024</Text>
     </Foot>
