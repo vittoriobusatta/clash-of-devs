@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import CommentCursor from "./comment-cursor";
+import CommentCursor from "../comment-cursor";
+import Final from "./final";
 
 export default function Sections() {
+  const container = useRef(null);
   return (
-    <Container>
+    <Container ref={container}>
       <List>
         {sections.map((section, i) => {
           const {
@@ -50,6 +52,7 @@ export default function Sections() {
             </Section>
           );
         })}
+        <Final />
       </List>
     </Container>
   );
@@ -64,10 +67,12 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: stretch;
 `;
 
 const Section = styled.li`
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;

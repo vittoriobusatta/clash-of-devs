@@ -1,6 +1,7 @@
 "use client";
-import Header from "./comps/header";
-import Loader from "./comps/loader";
+import Header from "./comps/layout/header";
+import Loader from "./comps/layout/loader";
+import CustomCursor from "./comps/layout/custom-cursor";
 import { inter } from "./fonts/fonts";
 import "./globals.css";
 import StyledComponentsRegistry from "./lib/styled-components-registry";
@@ -17,8 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className}`}>
         <StyledComponentsRegistry>
-          <Loader />
+          {/* <Loader /> */}
           <Header />
+          <CustomCursor />
           <SmoothScrolling>{children}</SmoothScrolling>
         </StyledComponentsRegistry>
       </body>

@@ -5,8 +5,6 @@ import styled from "styled-components";
 export default function Toogle() {
   const [isOn, setIsOn] = useState(false);
 
-  console.log(isOn);
-
   useEffect(() => {
     if (isOn) {
       document.body.classList.add("dark");
@@ -67,7 +65,6 @@ const Slider = styled.span`
   background-color: var(--foreground);
   transition: 0.4s;
   border-radius: 34px;
-
   &:before {
     position: absolute;
     content: "";

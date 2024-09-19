@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { FakeLogo } from "./fake-logo";
-import ProgressBar from "./progress-bar";
-import Toogle from "./toogle";
+import { FakeLogo } from "../fake-logo";
+import ProgressBar from "../progress-bar";
+import Toogle from "../toogle";
 
 export default function Header() {
   const [percentage, setPercentage] = useState(0);

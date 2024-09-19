@@ -43,8 +43,10 @@ export default function Final() {
   );
 }
 
-const Container = styled.section`
-  padding: 0 clamp(12px, 3vw, 32px);
+const Container = styled.li`
+  position: sticky;
+  top: 0;
+  z-index: 10;
   width: 100%;
   height: 62vw;
   max-height: 964px;

@@ -1,10 +1,10 @@
 "use client";
 
-import Hero from "./comps/hero";
-import Marquee from "./comps/marquee";
-import Sections from "./comps/sections";
-import Final from "./comps/final";
-import Footer from "./comps/footer";
+import Hero from "./comps/sections/hero";
+import Marquee from "./comps/sections/marquee";
+import Sections from "./comps/sections/sections";
+import Final from "./comps/sections/final";
+import Footer from "./comps/layout/footer";
 
 export default function Home() {
   return (
@@ -12,7 +12,6 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Sections />
-      <Final />
       <Footer />
     </main>
   );

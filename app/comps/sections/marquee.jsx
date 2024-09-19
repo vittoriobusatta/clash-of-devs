@@ -140,13 +140,14 @@ export default function Marquee() {
 }
 
 const Horiz = styled.section`
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   overflow: hidden;
   gap: 1vw;
   & h2 {
-    font-size: clamp(44px, 12vw, 162px);
+    /* font-size: clamp(44px, 12vw, 162px); */
+    font-size: 180px;
     white-space: nowrap;
   }
 `;

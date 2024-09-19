@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styled from "styled-components";
-import { FakeLogo } from "./fake-logo";
+import { FakeLogo } from "../fake-logo";
 
 export default function Footer() {
   return (

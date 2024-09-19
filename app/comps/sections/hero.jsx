@@ -1,10 +1,34 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { CardHero } from "../vector";
+import { CardHero } from "../../vector";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      mouseX.set(event.clientX);
+      mouseY.set(event.clientY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [mouseX, mouseY]);
+
+  const cardX = useTransform(mouseX, [0, window.innerWidth], [-10, 10], {
+    clamp: false,
+  });
+  const cardY = useTransform(mouseY, [0, window.innerHeight], [-10, 10], {
+    clamp: false,
+  });
+  
   return (
     <Container>
       <Heading>
@@ -17,8 +41,9 @@ export default function Hero() {
           <h1>l’emporte!</h1>
         </Row>
       </Heading>
-      <Card className="hero-card" />
-      {/* <CardHero src="/card-hero.svg" alt="card-hero" height={356} width={368} /> */}
+      <motion.div className="card-content" style={{ x: cardX, y: cardY }}>
+        <Card className="hero-card" />
+      </motion.div>
     </Container>
   );
 }
@@ -35,6 +60,10 @@ const Container = styled.section`
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 40px;
+  }
+  & .card-content {
+    height: auto;
+    width: 40vw;
   }
 `;
 
@@ -87,8 +116,8 @@ const Icon = styled(Image)`
 
 const Card = styled(CardHero)`
   /* height: min(30vw, 460px); */
-  height: auto;
-  width: 40vw;
+  height: 100%;
+  width: 100%;
   @media (max-width: 600px) {
     width: 100%;
     max-width: 400px;
